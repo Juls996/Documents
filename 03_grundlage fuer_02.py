@@ -1,11 +1,12 @@
+import os
 import sys
-import os, time
-
+import time
 
 pyt_path = "C:\\Users\\taskin\\Documents\\Test01"
 sys.path.append(pyt_path)
 
 files = list(map(lambda x: f"{pyt_path}\\{x}", next(os.walk(pyt_path), (None, None, []))[2]))
+
 
 def getDDMMYY(filepath):
     statbuf = os.stat(filepath)
@@ -47,9 +48,8 @@ def getDDMMYY(filepath):
     return ('_' + strDay + strMonth + strYear + '_' + strHour + strMinute + strSecond)
 
 newlist = []
-for x in files:
-    newlist.append(getDDMMYY(x))
-out = newlist
+for filepath in files:
+    newlist.append(getDDMMYY(filepath))
 
 print(f"newlist -> {newlist}")
 
